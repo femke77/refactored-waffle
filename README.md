@@ -1,3 +1,6 @@
+
+Took over the following code and now refactoring for multi channel including HOC with graphql
+
 # devThoughts
 This is a real-time chat app created for the [GraphQL for Beginners](https://lo-victoria.com/series/graphql) series on my blog.
 
