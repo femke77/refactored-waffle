@@ -4,15 +4,18 @@ import {
   InMemoryCache,
   ApolloProvider,
   gql,
-
+  createHttpLink
 } from "@apollo/client";
-
+import { HttpLink } from "apollo-link-http";
 import { graphql } from "@apollo/client/react/hoc";
 import "./App.css";
 
+const link = new HttpLink({
+  uri: "http://localhost:3001/graphql"
+})
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql',
+ link,
   cache: new InMemoryCache(),
 });
 
