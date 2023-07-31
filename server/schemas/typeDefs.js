@@ -9,7 +9,12 @@ type Channel {
  type Query {
     channels: [Channel]  
  }
+
+ type Mutation {
+   addChannel(name: String!): Channel
+ }
  `;
+
 
 
  module.exports = typeDefs;

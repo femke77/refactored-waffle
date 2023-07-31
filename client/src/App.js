@@ -4,11 +4,11 @@ import {
   InMemoryCache,
   ApolloProvider,
   gql,
-  createHttpLink
 } from "@apollo/client";
 import { HttpLink } from "apollo-link-http";
 import { graphql } from "@apollo/client/react/hoc";
 import "./App.css";
+import AddChannel from "./AddChannel";
 
 const link = new HttpLink({
   uri: "http://localhost:3001/graphql"
@@ -26,9 +26,14 @@ const ChannelsList = ({ data: { loading, error, channels } }) => {
   }
   if (error) {
     return <p>{error.message}</p>;
-  } return <ul>
-    {channels.map(ch => <li key={ch.id}>{ch.name}</li>)}
-  </ul>;
+  } return (
+    <div className="channelsList">
+      <AddChannel /> 
+      { channels.map( ch => 
+        (<div key={ch.id} className="channel">{ch.name}</div>)
+      )}
+    </div>
+  );
 };
 
 
