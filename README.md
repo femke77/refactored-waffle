@@ -1,5 +1,8 @@
 
-Took over the following code and now refactoring for multi channel including HOC with graphql
+Took over the following code and now refactoring for multi channel including refactor from v2 to v3 
+HOCs become hooks
+apollo-client is our main front end library.
+
 
 # devThoughts
 This is a real-time chat app created for the [GraphQL for Beginners](https://lo-victoria.com/series/graphql) series on my blog.
