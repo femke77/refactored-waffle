@@ -11,6 +11,7 @@ const AddChannel = () => {
         if (evt.keyCode === 13) {
             await addChannel({
                 variables: { name: evt.target.value },
+                //Zero latency mutation time
                 optimisticResponse: {
                    addChannel: {
                     name: evt.target.value,
@@ -19,8 +20,8 @@ const AddChannel = () => {
                    }
                 },
                 // refetchQueries: [{ query: CHANNEL_LISTS }]  ----OLD WAY!!!
-                
-                // NEW WAY ZERO LATENCY:
+
+                // NEW WAY ZERO LATENCY update dom:
                 update(cache, { data: { addChannel } }) {
                     try {
                       // First we retrieve existing channels data that is stored in the cache under the `CHANNELS_LIST` query
