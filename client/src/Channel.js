@@ -1,6 +1,7 @@
-import { useQuery } from "@apollo/client"
+import { useMutation, useQuery } from "@apollo/client"
 import { CHANNEL_DETAILS } from "./utils/queries"
 import { useParams } from "react-router-dom"
+import { ADD_MESSAGE } from "./utils/mutations"
 
 export default function Channel() {
 
@@ -9,12 +10,21 @@ export default function Channel() {
     const { data, loading, error } = useQuery(CHANNEL_DETAILS, {
         variables: { channelId: id }
     })
-
+    const [addMessage] = useMutation(ADD_MESSAGE)
+    console.log(id, data);
     if (loading) return <div>Loading....</div>
 
     const handleKeyUp = async (evt) => {
         if (evt.keyCode === 13) {
-
+            await addMessage({
+                variables: {
+                    message: {
+                        channelId: id,
+                        text: evt.target.value
+                    }
+                }
+            })
+            evt.target.value = "";
         }
     }
     return (
@@ -22,7 +32,8 @@ export default function Channel() {
             {data && (
                 <>
                     <h1>{data.channel.name} Channel</h1>
-                    {data.channel.messages.map(msg => `message: ${msg.text}`)}
+                    {data.channel.messages.length ? data.channel.messages.map(msg => (
+                        <p key={msg.id}>{msg.text}</p>)) : "No messages"}
                     <br />
                     <br />
                 </>
@@ -32,7 +43,7 @@ export default function Channel() {
                 placeholder="+ New message"
                 onKeyUp={handleKeyUp}
             />
-            {error && <div>{error.message}</div>}
+            {error && <div>ERROR: {error.message}</div>}
         </>
     )
 }

@@ -9,4 +9,14 @@ mutation addChannel($name: String!) {
   }
 }
 
-`
+`;
+
+
+export const ADD_MESSAGE = gql`
+  mutation addMessage($message: MessageInput!) {
+    addMessage(message: $message) {
+      id
+      text
+    }
+  }
+`;
