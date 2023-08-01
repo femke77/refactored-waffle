@@ -9,6 +9,8 @@ import { HttpLink } from "apollo-link-http";
 import { graphql } from "@apollo/client/react/hoc";
 import "./App.css";
 import AddChannel from "./AddChannel";
+import { CHANNEL_LISTS } from "./utils/queries";
+import { useQuery } from "@apollo/client";
 
 const link = new HttpLink({
   uri: "http://localhost:3001/graphql"
@@ -36,7 +38,6 @@ const ChannelsList = ({ data: { loading, error, channels } }) => {
   );
 };
 
-
 const channelsListQuery = gql`
   query ChannelsListQuery {
     channels {
@@ -48,6 +49,7 @@ const channelsListQuery = gql`
 const ChannelsListWithData = graphql(channelsListQuery)(ChannelsList);
 
 class App extends Component {
+
   render() {
     return (
       <ApolloProvider client={client}>
