@@ -11,7 +11,15 @@ const AddChannel = () => {
         if (evt.keyCode === 13) {
             await addChannel({
                 variables: { name: evt.target.value },
-                // refetchQueries: [{ query: CHANNEL_LISTS }]  OLD WAY!!!
+                optimisticResponse: {
+                   addChannel: {
+                    name: evt.target.value,
+                    id: Math.round(Math.random()* -1000000),
+                    __typename: 'Channel'
+                   }
+                },
+                // refetchQueries: [{ query: CHANNEL_LISTS }]  ----OLD WAY!!!
+                
                 // NEW WAY ZERO LATENCY:
                 update(cache, { data: { addChannel } }) {
                     try {
