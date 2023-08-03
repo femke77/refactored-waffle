@@ -9,6 +9,7 @@ const AddChannel = () => {
 
     const handleKeyUp = async (evt) => {
         if (evt.keyCode === 13) {
+          console.log("hit");
             await addChannel({
                 variables: { name: evt.target.value },
                 //Zero latency mutation time

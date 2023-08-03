@@ -1,5 +1,4 @@
-
-const channels = [{
+let channels = [{
     id: "1",
     name: 'beauty',
     messages:[{
@@ -10,10 +9,7 @@ const channels = [{
     id: "2",
     name: 'health',
     messages:[
-    //  {
-      // id: "3",
-      // text: 'take your vitamins!'
-//    }
+
   ]
 }]
 

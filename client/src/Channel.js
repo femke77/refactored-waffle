@@ -10,19 +10,35 @@ export default function Channel() {
     const { data, loading, error } = useQuery(CHANNEL_DETAILS, {
         variables: { channelId: id }
     })
-    const [addMessage] = useMutation(ADD_MESSAGE)
+    const [addMessage] = useMutation(ADD_MESSAGE,{
+      update: (cache, {data})=> {
+        cache.modify({
+            id: cache.identify({
+                __typename: "Channel",
+                id: id,
+            }),
+            fields:{
+                messages: (previous, {toReference}) => [...previous, toReference(data.addMessage) ]
+            }
+        })
+      }
+
+        
+    })
     console.log(id, data);
     if (loading) return <div>Loading....</div>
 
     const handleKeyUp = async (evt) => {
         if (evt.keyCode === 13) {
+            // ADD CACHE AND OP UI
             await addMessage({
                 variables: {
                     message: {
                         channelId: id,
                         text: evt.target.value
                     }
-                }
+                },
+               
             })
             evt.target.value = "";
         }
