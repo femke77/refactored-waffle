@@ -3,6 +3,8 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
+  dataIdFromObject,
+  toIdValue
 } from "@apollo/client";
 import { HttpLink } from "apollo-link-http";
 import "./App.css";
@@ -17,6 +19,15 @@ const link = new HttpLink({
 const client = new ApolloClient({
   link,
   cache: new InMemoryCache(),
+  // Using the normalized cache for getting a channel
+  customResolvers: {
+    Query: {
+      channel: (_, args) => {
+        return toIdValue(dataIdFromObject({ __typename: 'Channel', id: args['id'] }))
+      },
+    },
+  },
+  dataIdFromObject,
 });
 
 

@@ -8,8 +8,13 @@ export default function Channel() {
     const { id } = useParams()
 
     const { data, loading, error } = useQuery(CHANNEL_DETAILS, {
-        variables: { channelId: id }
-    })
+        variables: { channelId: id },
+        pollInterval: 3000,  //not part of tutorial
+      
+    })  
+    console.log(data);
+    // example of updating the cache when you have a query that has an arg
+    // and a mutation that needs to modify the object (channel has array)
     const [addMessage] = useMutation(ADD_MESSAGE,{
       update: (cache, {data})=> {
         cache.modify({

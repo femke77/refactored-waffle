@@ -27,6 +27,8 @@ const AddChannel = () => {
                     try {
                       // First we retrieve existing channels data that is stored in the cache under the `CHANNELS_LIST` query
                       // Could potentially not exist yet, so wrap in a try/catch
+                     
+                      // *Note that readQuery returns a read-only result
                       const { channels } = cache.readQuery({ query: CHANNEL_LISTS });
               
                       // Then we update the cache by combining existing channels data with the newly created data returned from the mutation
