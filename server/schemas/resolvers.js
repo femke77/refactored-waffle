@@ -1,3 +1,5 @@
+import { PubSub, withFilter } from 'graphql-subscriptions'
+
 let channels = [{
     id: "1",
     name: 'beauty',

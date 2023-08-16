@@ -9,7 +9,7 @@ import {
 import { HttpLink } from "apollo-link-http";
 import "./App.css";
 import ChannelsList from "./ChannelsList";
-import Channel from "./Channel";
+import Channel from "./ChannelDetails";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const link = new HttpLink({
@@ -19,15 +19,7 @@ const link = new HttpLink({
 const client = new ApolloClient({
   link,
   cache: new InMemoryCache(),
-  // Using the normalized cache for getting a channel
-  customResolvers: {
-    Query: {
-      channel: (_, args) => {
-        return toIdValue(dataIdFromObject({ __typename: 'Channel', id: args['id'] }))
-      },
-    },
-  },
-  dataIdFromObject,
+ 
 });
 
 

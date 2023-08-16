@@ -1,6 +1,6 @@
 // const { gql } = require('apollo-server-express');
 
-const typeDefs =`
+const typeDefs = `
 type Channel {
     id: ID!               
     name: String!
@@ -16,6 +16,12 @@ type Channel {
    channelId: ID!
    text: String
  }
+ 
+ type Subscription {
+  messageAdded(channelId: ID!): Message
+}
+
+
  type Query {
     channels: [Channel]  
     channel(id: ID!): Channel
@@ -27,6 +33,4 @@ type Channel {
  }
  `;
 
-
-
- module.exports = typeDefs;
+module.exports = typeDefs;

@@ -24,3 +24,21 @@ export const CHANNEL_DETAILS = gql`
   }
 `;
 
+export const CHANNEL_QUERY = gql`
+  query ChannelQuery($channelId: ID!) {
+    channel(id: $channelId) {
+      id
+      name
+    }
+  }
+`;
+
+export const ADD_MESSAGE = gql`
+  mutation addMessage($message: MessageInput!) {
+    addMessage(message: $message) {
+      id
+      text
+    }
+  }
+`;
+
