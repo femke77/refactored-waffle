@@ -1,7 +1,7 @@
 
-Took over the following code and now refactoring for multi channel including refactor from v2 to v3 
-HOCs become hooks
-apollo-client is our main front end library.
+Took over the following code and now refactoring for multi channel including refactor from v2 to v3.
+currently working on branch 'with-channels' for the chat rooms. 
+with-channels is from old apollo tutorial that I am updating.  
 
 
 # devThoughts
