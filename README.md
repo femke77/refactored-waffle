@@ -4,6 +4,7 @@ currently working on branch 'with-channels' for the chat rooms.
 with-channels is from old apollo tutorial that I am updating.  
 
 
+
 # devThoughts
 This is a real-time chat app created for the [GraphQL for Beginners](https://lo-victoria.com/series/graphql) series on my blog.
 
