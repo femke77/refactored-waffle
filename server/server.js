@@ -5,9 +5,6 @@ const { typeDefs, resolvers } = require('./schemas');
 // const db = require('./config/connection');
 
 
-const {execute, subscribe} = require('graphql')
-const {SubscriptionServer} = require('subscriptions-transport-ws')
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 

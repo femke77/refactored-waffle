@@ -11,7 +11,6 @@ import ChannelsList from "./ChannelsList";
 import Channel from "./ChannelDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { WebSocketLink } from "@apollo/client/link/ws";
-import { SubscriptionClient } from "subscriptions-transport-ws";
 import { getMainDefinition } from "@apollo/client/utilities";
 
 const wsLink = new WebSocketLink({

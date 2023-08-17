@@ -2,15 +2,12 @@ import { useMutation, useQuery } from "@apollo/client"
 import { CHANNEL_DETAILS } from "./utils/queries"
 import { useParams } from "react-router-dom"
 import { ADD_MESSAGE } from "./utils/mutations"
-import ChannelPreview from "./ChannelPreview"
 export default function Channel() {
 
     const { id } = useParams()
 
     const { data, loading, error } = useQuery(CHANNEL_DETAILS, {
-        variables: { channelId: id }, 
-      // //off for subscriptions:
-        // pollInterval: 2000,  
+        variables: { channelId: id },  
     })  
    
 
