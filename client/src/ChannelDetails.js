@@ -50,11 +50,15 @@ export default function Channel() {
             evt.target.value = "";
         }
     }
+    if (data.channel === null){
+        return <div>Channel doesn't exist</div>
+    }
     return (
         <>
             {data && (
                 <>
-                    <h1>{data.channel.name} Channel</h1>
+              
+                    <h1>{data.channel.name  } </h1>
                     {data.channel.messages.length ? data.channel.messages.map(msg => (
                         <p key={msg.id}>{msg.text}</p>)) : "No messages"}
                     <br />
