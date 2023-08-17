@@ -8,8 +8,9 @@ export default function Channel() {
     const { id } = useParams()
 
     const { data, loading, error } = useQuery(CHANNEL_DETAILS, {
-        variables: { channelId: id },
-        pollInterval: 3000,   
+        variables: { channelId: id }, 
+      // //off for subscriptions:
+        // pollInterval: 2000,  
     })  
    
 

@@ -1,4 +1,4 @@
-const {PubSub} = require("graphql-subscriptions")
+const {PubSub, withFilter} = require("graphql-subscriptions")
 const pubsub = new PubSub()
 
 let channels = [
@@ -55,6 +55,7 @@ const resolvers = {
 
       const newMessage = { id: String(nextMessageId++), text: message.text };
       channel.messages.push(newMessage);
+      
       pubsub.publish("messageAdded", {
         messageAdded: newMessage,
         channelId: message.channelId,
@@ -62,6 +63,16 @@ const resolvers = {
       return newMessage;
     },
   },
+  Subscription: {
+    messageAdded: {
+      subscribe: withFilter(() => pubsub.asyncIterator("messageAdded"),
+        (payload, variables) => {
+          console.log("test");
+          return payload.channelId === variables.channelId;
+        }
+      )
+    }
+  }
 };
 
 
