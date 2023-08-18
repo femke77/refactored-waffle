@@ -14,7 +14,7 @@ import { WebSocketLink } from "@apollo/client/link/ws";
 import { getMainDefinition } from "@apollo/client/utilities";
 
 const wsLink = new WebSocketLink({
-  uri: "ws://localhost:3001/graphql",
+  uri: "ws://localhost:3001/subscription",
   options: {
     reconnect: true,
     lazy: true,
@@ -50,7 +50,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <div className="App-header">
-              <h2>Welcome to Apollo</h2>
+              <h2>Welcome to Apollo GraphQL</h2>
             </div>
             <Routes>
               <Route path="/" element={<ChannelsList />} />

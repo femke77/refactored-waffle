@@ -4,23 +4,26 @@ const pubsub = new PubSub()
 let channels = [
   {
     id: "1",
-    name: "beauty",
+    name: "Let's Talk about Code!",
     messages: [
       {
-        id: "2",
-        text: "wash your face!",
+        id: "1",
+        text: "I LOVE apollo!!!",
       },
     ],
   },
   {
     id: "2",
-    name: "health",
-    messages: [],
+    name: "Let's Talk about Health!",
+    messages: [{
+      id: '1',
+      text: "I'm taking vitamins now."
+    }],
   },
 ];
 
 let nextId = "3";
-let nextMessageId = "3";
+let nextMessageId = "2";
 
 const resolvers = {
   Query: {
@@ -59,7 +62,7 @@ const resolvers = {
     messageAdded: {
       subscribe: withFilter(() => pubsub.asyncIterator("messageAdded"),
         (payload, variables) => {
-          console.log("subscription messagedAdded test");
+          console.log("subscription messagedAdded working");
           return payload.channelId === variables.channelId;
         }
       )

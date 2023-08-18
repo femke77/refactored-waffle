@@ -11,7 +11,6 @@ const {
 const { makeExecutableSchema } = require("@graphql-tools/schema");
 const { WebSocketServer } = require("ws");
 const { useServer } = require("graphql-ws/lib/use/ws");
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 const httpServer = createServer(app);
@@ -36,10 +35,11 @@ const server = new ApolloServer({
 });
 const wsServer = new WebSocketServer({
   server: httpServer,
-  path: '/graphql',
+  path: "/subscription",
 });
 
 const serverCleanup = useServer({ schema }, wsServer);
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
