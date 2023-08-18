@@ -39,8 +39,6 @@ const wsServer = new WebSocketServer({
   path: '/graphql',
 });
 
-// Hand in the schema we just created and have the
-// WebSocketServer start listening.
 const serverCleanup = useServer({ schema }, wsServer);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
