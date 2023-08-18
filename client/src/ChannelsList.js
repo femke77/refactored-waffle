@@ -16,9 +16,11 @@ const {data, loading, error} = useQuery(CHANNEL_LISTS, {pollInterval: 5000 })
         <AddChannel /> 
         { data.channels.map( ch => 
           (
+            <div key={ch.id}>
             <Link to={`/channels/${ch.id}`}>
-          <div key={ch.id} className={'channel ' + (ch.id < 0 ? 'optimistic' : '')}>{ch.name}</div>
+          <div  className={'channel ' + (ch.id < 0 ? 'optimistic' : '')}>{ch.name}</div>
             </Link>
+            </div>
           )
         )}
       </div>

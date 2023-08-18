@@ -14,7 +14,7 @@ import { WebSocketLink } from "@apollo/client/link/ws";
 import { getMainDefinition } from "@apollo/client/utilities";
 
 const wsLink = new WebSocketLink({
-  uri: "ws://localhost:3001/sub",
+  uri: "ws://localhost:3001/graphql",
   options: {
     reconnect: true,
     lazy: true,

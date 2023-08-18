@@ -48,6 +48,7 @@ const resolvers = {
       channel.messages.push(newMessage);
       
       pubsub.publish("messageAdded", {
+  
         messageAdded: newMessage,
         channelId: message.channelId,
       });
@@ -58,7 +59,7 @@ const resolvers = {
     messageAdded: {
       subscribe: withFilter(() => pubsub.asyncIterator("messageAdded"),
         (payload, variables) => {
-          console.log("test");
+          console.log("subscription messagedAdded test");
           return payload.channelId === variables.channelId;
         }
       )
