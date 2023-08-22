@@ -2,21 +2,9 @@ import { ADD_MESSAGE } from "./utils/mutations";
 import { useMutation } from "@apollo/client";
 
 export default function AddMessage({ id }) {
+
+  //cache was causing duplicate messages so it was removed.
   const [addMessage] = useMutation(ADD_MESSAGE, {
-    update: (cache, { data }) => {
-      cache.modify({
-        id: cache.identify({
-          __typename: "Channel",
-          id: id,
-        }),
-        fields: {
-          messages: (previous, { toReference }) => [
-            ...previous,
-            toReference(data.addMessage),
-          ],
-        },
-      });
-    },
   });
 
   const handleKeyUp = async (evt) => {

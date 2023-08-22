@@ -24,7 +24,7 @@ export default function Channel() {
       {data && (
         <>
           <h1>{data.channel.name} </h1>
-          <AddMessage id={id} />
+          <AddMessage id={id} messages={data.channel.messages} />
           <br />
           <MessagesList
             messages={data.channel.messages}
