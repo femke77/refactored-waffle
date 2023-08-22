@@ -42,3 +42,11 @@ export const ADD_MESSAGE = gql`
   }
 `;
 
+const messagesSubscription = gql`
+  subscription messageAdded($channelId: ID!) {
+    messageAdded(channelId: $channelId) {
+      id
+      text
+    }
+  }
+`
