@@ -12,27 +12,25 @@ import Channel from "./ChannelDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { WebSocketLink } from "@apollo/client/link/ws";
 import { getMainDefinition } from "@apollo/client/utilities";
-import { setContext } from '@apollo/client/link/context';
+import { setContext } from "@apollo/client/link/context";
+import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
+import { createClient } from "graphql-ws";
 
-const wsLink = new WebSocketLink({
-  uri: "ws://localhost:3001/subscription",
-  options: {
-    reconnect: true,
-    lazy: true,
-    timeout: 30000,
-  },
-});
+const wsLink = new GraphQLWsLink(
+  createClient({
+    url: "ws://localhost:3001/subscription",
+  })
+);
 
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
-
+// const authLink = setContext((_, { headers }) => {
+//   const token = localStorage.getItem('id_token');
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: token ? `Bearer ${token}` : '',
+//     },
+//   };
+// });
 
 const httpLink = new HttpLink({
   uri: "http://localhost:3001/graphql",
@@ -46,8 +44,8 @@ const link = split(
       definition.operation === "subscription"
     );
   },
-  authLink.concat(wsLink),
-  authLink.concat(httpLink)
+  wsLink,
+  httpLink
 );
 
 const client = new ApolloClient({

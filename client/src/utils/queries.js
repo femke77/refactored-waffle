@@ -42,7 +42,7 @@ export const ADD_MESSAGE = gql`
   }
 `;
 
-const messagesSubscription = gql`
+export const messagesSubscription = gql`
   subscription messageAdded($channelId: ID!) {
     messageAdded(channelId: $channelId) {
       id
