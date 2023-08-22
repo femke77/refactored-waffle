@@ -15,6 +15,8 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const httpServer = createServer(app);
 const schema = makeExecutableSchema({ typeDefs, resolvers });
+
+
 const server = new ApolloServer({
   schema,
   csrfPrevention: true,
@@ -37,6 +39,7 @@ const wsServer = new WebSocketServer({
   server: httpServer,
   path: "/subscription",
 });
+
 
 const serverCleanup = useServer({ schema }, wsServer);
 
