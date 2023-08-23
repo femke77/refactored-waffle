@@ -16,22 +16,23 @@ import { setContext } from "@apollo/client/link/context";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
 
+// websock link
 const wsLink = new GraphQLWsLink(
   createClient({
     url: "ws://localhost:3001/subscription",
   })
 );
-
-// const authLink = setContext((_, { headers }) => {
-//   const token = localStorage.getItem('id_token');
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : '',
-//     },
-//   };
-// });
-
+// authentication link
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+// httpLink (for websocket)
 const httpLink = new HttpLink({
   uri: "http://localhost:3001/graphql",
 });
@@ -44,8 +45,8 @@ const link = split(
       definition.operation === "subscription"
     );
   },
-  wsLink,
-  httpLink
+  authLink.concat(wsLink),
+  authLink.concat(httpLink)
 );
 
 const client = new ApolloClient({
