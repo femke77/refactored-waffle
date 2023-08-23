@@ -1,14 +1,7 @@
 
-Took over the following code and now refactoring for multi channel including refactor from v2 to v3.
-currently working on branch 'with-channels' for the chat rooms. 
-with-channels is from old apollo tutorial that I am updating.  
 
 
-# devThoughts
-This is a real-time chat app created for the [GraphQL for Beginners](https://lo-victoria.com/series/graphql) series on my blog.
-
-![img](https://cdn.hashnode.com/res/hashnode/image/upload/v1617283127887/toUkcAy_cv.png)
-
+# GraphQL Real-time Chat/Messaging 
 
 ### Technologies Used
 <p>
@@ -20,10 +13,12 @@ This is a real-time chat app created for the [GraphQL for Beginners](https://lo-
 </p>
 
 
-### Demo
-![demo](https://cdn.hashnode.com/res/hashnode/image/upload/v1617185843961/_c4WXjooW.gif)
 
-### Getting Started
-1. Clone this repo
-2. `npm install` on both `client` and `server` folders
-3. `npm start`
+
+GraphQL real-time messaging with channels. Uses polling to make the messages appear instantly.
+
+````
+npm i
+npm run dev
+``````
+
