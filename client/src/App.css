@@ -10,3 +10,11 @@ li {
   padding: 20px;
 
 }
+
+div.optimistic {
+  color: rgba(204, 30, 30, 0.5);
+}
+
+.msg{
+  display: block;
+}

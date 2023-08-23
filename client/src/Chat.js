@@ -6,11 +6,8 @@ import {
   useMutation,
   useSubscription,
   gql,
-
 } from "@apollo/client";
-import { graphql } from '@apollo/client/react/hoc';
 import { WebSocketLink } from "@apollo/client/link/ws";
-import ChannelsList from "./ChannelsList";
 import { Container, Chip, Grid, TextField, Button } from "@material-ui/core";
 
 // create an open socket for real time communication
@@ -39,25 +36,13 @@ const GET_MESSAGES = gql`
   }
 `;
 
-const CHANNELS_LIST_QUERY = gql`
-query ChannelsListQuery {
-  channels {
-    id
-    name
-  }
-}
-`
-
 const POST_MESSAGE = gql`
   mutation($user: String!, $text: String!) {
     postMessage(user: $user, text: $text)
   }
 `;
 
-// graphql HOC
-const ChannelsListWithData = graphql(CHANNELS_LIST_QUERY)(ChannelsList)
-
-
+// resolvers.js
 const Messages = ({ user }) => {
   const { data } = useSubscription(GET_MESSAGES);
   if (!data) {
