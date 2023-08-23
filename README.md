@@ -1,6 +1,3 @@
-
-
-
 # GraphQL Real-time Chat/Messaging 
 
 ### Technologies Used
@@ -14,11 +11,13 @@
 
 
 
+GraphQL real-time messaging with channels. Uses polling to make the messages appear instantly. See my other repo called apollo-react-rt-chat to see subscriptions in action. 
 
-GraphQL real-time messaging with channels. Uses polling to make the messages appear instantly.
+## Installation and Usage
 
 ````
 npm i
 npm run dev
 ``````
 
+Open two browser windows and watch the chat fly back and forth. 
