@@ -1,7 +1,7 @@
 
 import { useMutation } from '@apollo/client';
-import { ADD_CHANNEL } from './utils/mutations';
-import { CHANNEL_LISTS } from './utils/queries';
+import { ADD_CHANNEL } from '../utils/mutations';
+import { CHANNEL_LISTS } from '../utils/queries';
 
 const AddChannel = () => {
 

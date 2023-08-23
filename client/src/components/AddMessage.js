@@ -1,4 +1,4 @@
-import { ADD_MESSAGE } from "./utils/mutations";
+import { ADD_MESSAGE } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 export default function AddMessage({ id }) {

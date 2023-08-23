@@ -1,8 +1,8 @@
 import { useQuery, useSubscription, useEffect } from "@apollo/client";
-import { CHANNEL_DETAILS } from "./utils/queries";
+import { CHANNEL_DETAILS } from "../utils/queries";
 import { useParams } from "react-router-dom";
 import AddMessage from "./AddMessage";
-import { messagesSubscription } from "./utils/queries";
+import { messagesSubscription } from "../utils/queries";
 import MessagesList from "./MessagesList";
 
 export default function Channel() {

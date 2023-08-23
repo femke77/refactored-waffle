@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import AddChannel from "./AddChannel";
-import { CHANNEL_LISTS } from "./utils/queries";
+import { CHANNEL_LISTS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
 const ChannelsList = () => {
