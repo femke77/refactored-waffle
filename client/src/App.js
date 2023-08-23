@@ -3,13 +3,12 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  dataIdFromObject,
-  toIdValue
+
 } from "@apollo/client";
 import { HttpLink } from "apollo-link-http";
 import "./App.css";
 import ChannelsList from "./ChannelsList";
-import Channel from "./ChannelDetails";
+import Channel from "./Channel";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const link = new HttpLink({
